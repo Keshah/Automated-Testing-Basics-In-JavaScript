@@ -1,0 +1,15 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "file:///C:/Automated-Testing-Basics-In-JavaScript/JavaScript/Objects%20and%20Functions/5%20task/index.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
