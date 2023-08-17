@@ -9,7 +9,7 @@ for (let el of manufacturers) {
 console.log(str)
 
 
-// tried the way below, described in the video, but it doesnt work
+// tried the way below, with forEach, but it doesnt work
 
 //const manufacturers = ["BMW", "Mercedes", "Audi"]
 //
