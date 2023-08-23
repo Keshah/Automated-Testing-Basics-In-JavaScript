@@ -12,3 +12,19 @@ let cat = {
 cat.__proto__ = animal;
 
 alert(cat.move)
+
+
+let animal = {
+  name: "Animal",
+  move() {
+    alert(`${this.name} moves.`);
+  }
+};
+
+let cat = {
+  __proto__: animal,
+  name: "Cat",
+  move() {
+    super.move();
+  }
+};
