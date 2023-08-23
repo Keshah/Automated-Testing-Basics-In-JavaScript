@@ -2,22 +2,9 @@
 //cat object must inherit move property from object animal
 
 let animal = {
-move: true
-};
-
-let cat = {
-
-};
-
-cat.__proto__ = animal;
-
-alert(cat.move)
-
-
-let animal = {
   name: "Animal",
   move() {
-    alert(`${this.name} moves.`);
+    console.log(`${this.name} moves.`);
   }
 };
 
@@ -28,3 +15,5 @@ let cat = {
     super.move();
   }
 };
+
+cat.move();
