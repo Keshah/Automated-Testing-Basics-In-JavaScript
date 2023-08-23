@@ -7,3 +7,9 @@ try {
     console.log("let must be declared")
 } 
 
+
+ let b = 1 / 0
+ let error = new Error("Cannor be divided by zero");
+
+ if  (b = "infinity"){
+ console.log(error)}
