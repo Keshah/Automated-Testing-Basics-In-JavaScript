@@ -51,6 +51,8 @@ describe("Cloud Google", () => {
     // "Hardcore" Task
     await computeEngineForm.clickOnEmailEstimate();
 
+    // first variant of copypaste mail 
+    
     // await browser.newWindow("https://www.1secmail.com/");
     // await tempMailPage.clickCopyEmail()
     // await browser.switchWindow("https://cloud.google.com/")
