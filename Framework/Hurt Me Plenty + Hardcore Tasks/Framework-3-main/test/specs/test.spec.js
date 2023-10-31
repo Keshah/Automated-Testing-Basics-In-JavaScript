@@ -1,9 +1,12 @@
+
 const searchResultsPage = require('../pageobjects/searchResultsPage')
 const mainGoogleCloudPage = require('../pageobjects/mainGoogleCloudPage')
 const productsCalculatorPage = require('../pageobjects/productsCalculatorPage')
 const computeEngineForm = require('../pageobjects/computeEngineForm')
 const modalWindowEmailYourEstimate = require('../pageobjects/modalWindowEmailYourEstimate')
-
+const tempMailPage = require('../pageobjects/tempMailPage')
+//import { Key } from 'webdriverio'
+//const { Key } = require('expect-webdriverio')
 
 // "Hurt Me Plenty" Task
 describe("Cloud Google", () => {
@@ -54,13 +57,27 @@ describe("Cloud Google", () => {
     // first variant of copypaste mail 
     
     // await browser.newWindow("https://www.1secmail.com/");
-    // await tempMailPage.clickCopyEmail()
+    //
+    // const $copyInput = await $("//input[@placeholder='some_random_name']")
+    // await $copyInput.click()
+    // await browser.keys([Key.Ctrl, 'a'])
+    // await browser.keys([Key.Ctrl, 'c'])
+                             //await tempMailPage.clickCopyEmail()
     // await browser.switchWindow("https://cloud.google.com/")
     // await productsCalculatorPage.switchToFrame();
-    await modalWindowEmailYourEstimate.fillInputEmail();
-    // нажать на кнопку SEND EMAIL
-
+    // 
+    // const $pasteInput = await $("//label[contains(text(),'Email')]/../input")
+    // await $pasteInput.click()
     // await browser.keys([Key.Ctrl, 'v'])
+    
+
+    //                   Second variant of copypaste
+    await modalWindowEmailYourEstimate.fillInputEmail();
+    await browser.pause(2000)
+    await $("//button[contains(., 'Send Email')]").click()
+   
+
+
 
     await browser.pause(60000)
 

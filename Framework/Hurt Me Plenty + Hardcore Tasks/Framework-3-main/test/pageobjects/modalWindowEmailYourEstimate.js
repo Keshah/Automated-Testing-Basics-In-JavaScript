@@ -13,6 +13,12 @@ class modalWindowEmailYourEstimate {
 
   }
 
+  async clickOnSendButton() {
+    let xpathButton = "//button[contains(., 'Send Email')]"
+    await $(xpathButton).waitForClickable(5000);
+    await $(xpathButton).click();
+  }
+
 }
 
 module.exports = new modalWindowEmailYourEstimate();
