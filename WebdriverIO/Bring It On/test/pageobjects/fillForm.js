@@ -58,6 +58,7 @@ class computeEngineForm {
     let xpathButton = "//button[contains(., 'Create New Paste')]"
     await $(xpathButton).waitForClickable(5000);
     await $(xpathButton).click();
+    await browser.pause(1000)
   }
 
   }
