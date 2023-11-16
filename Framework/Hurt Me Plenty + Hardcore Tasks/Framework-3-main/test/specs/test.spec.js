@@ -65,9 +65,9 @@ describe("Cloud Google", () => {
     await $("//button[contains(., 'Send Email')]").click()
     await browser.switchWindow("https://tempail.com/")
     await browser.pause(2000)
-    await $('//div[@class="message_top"]').scrollIntoView({ block: 'center', inline: 'center' });
-    await $('//div[@class="message_top"]').waitForDisplayed(20000)
-    await $('//div[@class="message_top"]').click()
+    await $('//li[@class="mail "]]').scrollIntoView({ block: 'center', inline: 'center' });
+    await $('//li[@class="mail "]]').waitForDisplayed(20000)
+    await $('//li[@class="mail "]]').click()
 
     const result = await $('#epostalar li:nth-child(2) a')
     await result.waitForDisplayed()
