@@ -5,8 +5,6 @@ const productsCalculatorPage = require('../pageobjects/productsCalculatorPage')
 const computeEngineForm = require('../pageobjects/computeEngineForm')
 const modalWindowEmailYourEstimate = require('../pageobjects/modalWindowEmailYourEstimate')
 const tempMailPage = require('../pageobjects/tempMailPage')
-//import { Key } from 'webdriverio'
-//const { Key } = require('expect-webdriverio')
 
 // "Hurt Me Plenty" Task
 describe("Cloud Google", () => {
@@ -53,37 +51,58 @@ describe("Cloud Google", () => {
 
     // "Hardcore" Task
     await computeEngineForm.clickOnEmailEstimate();
-
-    // first variant of copypaste mail 
-    
-    // await browser.newWindow("https://www.1secmail.com/");
-    //
-    // const $copyInput = await $("//input[@placeholder='some_random_name']")
-    // await $copyInput.click()
-    // await browser.keys([Key.Ctrl, 'a'])
-    // await browser.keys([Key.Ctrl, 'c'])
-                             //await tempMailPage.clickCopyEmail()
-    // await browser.switchWindow("https://cloud.google.com/")
-    // await productsCalculatorPage.switchToFrame();
-    // 
-    // const $pasteInput = await $("//label[contains(text(),'Email')]/../input")
-    // await $pasteInput.click()
-    // await browser.keys([Key.Ctrl, 'v'])
-    
-
-    //                   Second variant of copypaste
-    await modalWindowEmailYourEstimate.fillInputEmail();
+    await browser.newWindow("https://tempail.com/");
     await browser.pause(2000)
+    await $('//a[@class="kopyala-link"]').click()
+    await browser.switchWindow("https://cloud.google.com/")
+    await productsCalculatorPage.switchToFrame();
+    
+    const $pasteInput = await $("//label[contains(text(),'Email')]/../input")
+    await $pasteInput.click()
+    await browser.keys(['Control', 'v'])
+    await browser.pause(2000)
+  
     await $("//button[contains(., 'Send Email')]").click()
-   
+    await browser.switchWindow("https://tempail.com/")
+    await browser.pause(2000)
+    await $('//div[@class="message_top"]').scrollIntoView({ block: 'center', inline: 'center' });
+    await $('//div[@class="message_top"]').waitForDisplayed(20000)
+    await $('//div[@class="message_top"]').click()
+
+    const result = await $('#epostalar li:nth-child(2) a')
+    await result.waitForDisplayed()
+    neededResult = await result.getText()
+
+    expect(result).to.include(neededResult)
 
 
+   // await browser.newWindow("https://www.1secmail.com/");
 
-    await browser.pause(60000)
+   // await $("//a[contains(., 'Copy')]").click()
+   // await browser.switchWindow("https://cloud.google.com/")
+   // await productsCalculatorPage.switchToFrame();
+   // 
+   // const $pasteInput = await $("//label[contains(text(),'Email')]/../input")
+   // await $pasteInput.click()
+   // await browser.keys(['Control', 'v'])
+  
+   // await $("//button[contains(., 'Send Email')]").click()
+   // await browser.switchWindow("https://www.1secmail.com/")
+   // await browser.pause(2000)
+
+   // //await browser.switchToFrame(await $('//iframe[@id="google_esf"]'));
+   // await browser.switchToFrame(await $('//iframe[@id="aswift_5"]'));
+   // await browser.switchToFrame(await $('//iframe[@name="ad_iframe"]'));
+
+   // await $("#dismiss-button").click()
+   // await browser.switchToParentFrame();
+   // await browser.switchToParentFrame();
+   // await $("//table//tbody//tr[2]").waitForDisplayed(3000)
+   // await $("//table//tbody//tr[2]").click()
 
 
+    await browser.pause(6000000)
 
 
-    // await browser.switchWindow("https://10minutemail.com/")
   })
 })
