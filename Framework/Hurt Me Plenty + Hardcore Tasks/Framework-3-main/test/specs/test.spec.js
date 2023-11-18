@@ -15,7 +15,7 @@ describe("Cloud Google", () => {
 
     await mainGoogleCloudPage.setSearchInput("Google Cloud Platform Pricing Calculator");
     await mainGoogleCloudPage.pressEnter();
-
+    await computeEngineForm.fillInputNumberOfInstances("4");
     await searchResultsPage.clickOnGoogleCloudPricingCalculator();
 
     await productsCalculatorPage.switchToFrame();
@@ -68,17 +68,17 @@ describe("Cloud Google", () => {
     await $('//li[@class="mail "]').scrollIntoView({ block: 'center', inline: 'center' });
     await $('//li[@class="mail "]').waitForDisplayed(20000)
     await $('//li[@class="mail "]').click()
-
-    //проверка
-   // const result = await $('#epostalar li:nth-child(2) a')
-   // await result.waitForDisplayed()
-   // neededResult = await result.getText()
 //
-   // expect(result).to.include(neededResult)
+//    //проверка
+//   // const result = await $('#epostalar li:nth-child(2) a')
+//   // await result.waitForDisplayed()
+//   // neededResult = await result.getText()
+////
+//   // expect(result).to.include(neededResult)
 
 
 
-    await browser.pause(6000000)
+    await browser.pause(2000)
 
 
   })

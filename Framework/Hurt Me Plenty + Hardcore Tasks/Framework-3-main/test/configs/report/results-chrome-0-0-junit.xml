@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Cloud Google" timestamp="2023-11-18T12:48:42" time="11.2" tests="1" failures="1" errors="1" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Cloud Google"/>
+      <property name="capabilities" value="chrome.119_0_6045_160.windows"/>
+      <property name="file" value="file:///C:/Automated-Testing-Basics-In-JavaScript/Framework/Hurt%20Me%20Plenty%20+%20Hardcore%20Tasks/Framework-3-main/test/specs/test.spec.js"/>
+    </properties>
+    <testcase classname="chrome.119_0_6045_160.windows.Cloud_Google" name="Should send email" time="11.199">
+      <failure/>
+      <error message="element (&quot;//label[contains(text(),'Number of instances')]/../input&quot;) still not displayed after 5000ms"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/window/maximize - {}
+RESULT: {}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/url - {"url":"https://cloud.google.com/"}
+RESULT: {"url":"https://cloud.google.com/"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"css selector","value":"[name='q']"}
+RESULT: {"using":"css selector","value":"[name='q']"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element/59279B21BD946ABE16AFAEA836FD44FF_element_34/clear - {}
+RESULT: {}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element/59279B21BD946ABE16AFAEA836FD44FF_element_34/value - {"text":"Google Cloud Platform Pricing Calculator"}
+RESULT: {"text":"Google Cloud Platform Pricing Calculator"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/actions - {"actions":[{"id":"action1","type":"key","parameters":{},"actions":[{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":""}]}]}
+RESULT: {"actions":[{"id":"action1","type":"key","parameters":{},"actions":[{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":""}]}]}
+COMMAND: DELETE /session/3afba7db3227466c4c81703ecc62fb02/actions - {}
+RESULT: {}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: POST /session/3afba7db3227466c4c81703ecc62fb02/element - {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+RESULT: {"using":"xpath","value":"//label[contains(text(),'Number of instances')]/../input"}
+COMMAND: GET /session/3afba7db3227466c4c81703ecc62fb02/screenshot - {}
+RESULT: {}
+COMMAND: DELETE /session/3afba7db3227466c4c81703ecc62fb02 - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: element ("//label[contains(text(),'Number of instances')]/../input") still not displayed after 5000ms
+    at async computeEngineForm.fillInputNumberOfInstances (C:\Automated-Testing-Basics-In-JavaScript\Framework\Hurt Me Plenty + Hardcore Tasks\Framework-3-main\test\pageobjects\computeEngineForm.js:9:5)
+    at async Context.<anonymous> (C:\Automated-Testing-Basics-In-JavaScript\Framework\Hurt Me Plenty + Hardcore Tasks\Framework-3-main\test\specs\test.spec.js:18:5)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

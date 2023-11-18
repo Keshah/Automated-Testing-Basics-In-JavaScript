@@ -1,3 +1,16 @@
+const fs = require("fs");
+const moment = require('moment');
+const dirPathScreenshots = "./test/configs/report/screenshots";
+const dirPathReport = "./test/configs/report";
+// var HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+// 
+// var reporter = new HtmlScreenshotReporter({
+//   dest: 'target/screenshots',
+//   filename: 'my-report.html'
+// });
+// 
+// 
+
 exports.config = {
     //
     // ====================
@@ -125,8 +138,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
-
+    reporters: ["spec", ['junit', {
+        outputDir: dirPathReport, //'./test/configs/report',
+        outputFileFormat: function(options) {
+            return `results-${options.capabilities.browserName}-${options.cid}-junit.xml`
+        },
+        skipPublishingChecks: true, 
+        skipMarkingBuildUnstable:true
+    }]],
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
@@ -149,6 +168,33 @@ exports.config = {
      */
     // onPrepare: function (config, capabilities) {
     // },
+    onPrepare: function (config, capabilities) {
+        if (fs.existsSync(dirPathScreenshots)) {
+          files = fs.readdirSync(dirPathScreenshots);
+          files.forEach(function(file, index) {
+            let curPath = dirPathScreenshots + "/" + file;
+            if(fs.statSync(curPath).isDirectory()) {
+             removeFolder(curPath);
+            } else {
+             fs.unlinkSync(curPath);
+            }
+          });
+          fs.rmdirSync(dirPathScreenshots);
+        } 
+  
+        if (fs.existsSync(dirPathReport)) {
+          files = fs.readdirSync(dirPathReport);
+          files.forEach(function(file, index) {
+            let curPath = dirPathReport + "/" + file;
+            if(fs.statSync(curPath).isDirectory()) {
+             removeFolder(curPath);
+            } else {
+             fs.unlinkSync(curPath);
+            }
+          });
+        } 
+      },
+
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -264,7 +310,18 @@ exports.config = {
      */
     // afterSession: function (config, capabilities, specs) {
     // },
+    afterTest: async (test, context, {error, result, duration, passed, retries}) => {
+        if (error) {
+          const filename = `${test.title} ${moment().format('YYYY-MM-DD_H-mm-ss')}.png`;
+          if (!fs.existsSync(dirPathScreenshots)) {
+            fs.mkdirSync(dirPathScreenshots, {recursive: true});
+          }
+          await browser.saveScreenshot(`${dirPathScreenshots}/${filename}`);
+        }
+      },
     /**
+     * 
+     * 
      * Gets executed after all workers got shut down and the process is about to exit. An error
      * thrown in the onComplete hook will result in the test run failing.
      * @param {object} exitCode 0 - success, 1 - fail
@@ -281,4 +338,28 @@ exports.config = {
     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
-}
+
+
+
+     // Setup the report before any tests start
+//   beforeLaunch: function() {
+//     return new Promise(function(resolve){
+//       reporter.beforeLaunch(resolve);
+//     });
+//   },
+// 
+//   // Assign the test reporter to each running instance
+//   onPrepare: function() {
+//     jasmine.getEnv().addReporter(reporter);
+//   },
+// 
+//   // Close the report after all tests finish
+//   afterLaunch: function(exitCode) {
+//     return new Promise(function(resolve){
+//       reporter.afterLaunch(resolve.bind(this, exitCode));
+//     });
+//   }
+// }
+//
+
+     }
