@@ -15,7 +15,6 @@ describe("Cloud Google", () => {
 
     await mainGoogleCloudPage.setSearchInput("Google Cloud Platform Pricing Calculator");
     await mainGoogleCloudPage.pressEnter();
-    await computeEngineForm.fillInputNumberOfInstances("4");
     await searchResultsPage.clickOnGoogleCloudPricingCalculator();
 
     await productsCalculatorPage.switchToFrame();
@@ -48,7 +47,7 @@ describe("Cloud Google", () => {
     await computeEngineForm.selectDropdownValueCommittedUsage("1 Year");
 
     await computeEngineForm.clickOnAddToEstimate();
-
+    await browser.pause(15000)
     // "Hardcore" Task
     await computeEngineForm.clickOnEmailEstimate();
     await browser.newWindow("https://tempail.com/");
@@ -64,17 +63,18 @@ describe("Cloud Google", () => {
   
     await $("//button[contains(., 'Send Email')]").click()
     await browser.switchWindow("https://tempail.com/")
-    await browser.pause(2000)
+    await browser.pause(80000)
     await $('//li[@class="mail "]').scrollIntoView({ block: 'center', inline: 'center' });
     await $('//li[@class="mail "]').waitForDisplayed(20000)
     await $('//li[@class="mail "]').click()
 //
-//    //проверка
-//   // const result = await $('#epostalar li:nth-child(2) a')
-//   // await result.waitForDisplayed()
-//   // neededResult = await result.getText()
-////
-//   // expect(result).to.include(neededResult)
+// проверка
+    const result = await $('//h2[contains(., "Estimated Monthly Cost: USD 1,081.20")]')
+    await result.waitForDisplayed()
+    await expect(result).toHaveText('Estimated Monthly Cost: USD 1,081.20')
+    // neededResult = await result.getText()
+
+    //expect(result).to.include(neededResult)
 
 
 
