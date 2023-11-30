@@ -31,23 +31,19 @@ describe("Cloud Google", () => {
     await computeEngineForm.selectDropdownValue("n1-standard-8 (vCPUs: 8, RAM: 30GB)");
     await computeEngineForm.selectCheckbox("Add GPUs");
     await computeEngineForm.clickOnDropdown("GPU type");
-    await computeEngineForm.selectDropdownValue("NVIDIA Tesla V100");
+    await computeEngineForm.selectDropdownValue("NVIDIA Tesla T4"); // cant select NVIDIA Tesla V100, it isn't avaliabale 
     await computeEngineForm.clickOnDropdown("Number of GPUs");
     await computeEngineForm.selectDropdownValue("1");
     await computeEngineForm.clickOnDropdown("Local SSD");
     await computeEngineForm.selectDropdownValue("2x375 GB");
     await computeEngineForm.clickOnDropdown("Datacenter location");
-
     // other select dropdown
     await computeEngineForm.fillInputRegion("Frankfurt");
     await computeEngineForm.selectDropdownValueRegion("Frankfurt (europe-west3)");
-
     await computeEngineForm.clickOnDropdown("Committed usage");
     // other select dropdown
     await computeEngineForm.selectDropdownValueCommittedUsage("1 Year");
-
     await computeEngineForm.clickOnAddToEstimate();
-    await browser.pause(15000)
     // "Hardcore" Task
     await computeEngineForm.clickOnEmailEstimate();
     await browser.newWindow("https://tempail.com/");
@@ -59,25 +55,22 @@ describe("Cloud Google", () => {
     const $pasteInput = await $("//label[contains(text(),'Email')]/../input")
     await $pasteInput.click()
     await browser.keys(['Control', 'v'])
-    await browser.pause(2000)
+    
   
     await $("//button[contains(., 'Send Email')]").click()
     await browser.switchWindow("https://tempail.com/")
-    await browser.pause(80000)
+    await browser.pause(10000)
     await $('//li[@class="mail "]').scrollIntoView({ block: 'center', inline: 'center' });
     await $('//li[@class="mail "]').waitForDisplayed(20000)
     await $('//li[@class="mail "]').click()
 //
 // проверка
-    const result = await $('//h2[contains(., "Estimated Monthly Cost: USD 1,081.20")]')
+    await browser.switchToFrame(await $('//iframe[@id="iframe"]'));
+    const result = await $('//h2[contains(., "Estimated Monthly Cost: USD 1,840.40")]')
     await result.waitForDisplayed()
-    await expect(result).toHaveText('Estimated Monthly Cost: USD 1,081.20')
-    // neededResult = await result.getText()
+    await expect(result).toHaveText('Estimated Monthly Cost: USD 1,840.40')
 
-    //expect(result).to.include(neededResult)
-
-
-
+    
     await browser.pause(2000)
 
 
