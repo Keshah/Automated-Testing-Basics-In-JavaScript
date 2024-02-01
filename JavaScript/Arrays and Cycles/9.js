@@ -1,6 +1,15 @@
 // Implement a loop that prints prime numbers to the console
 
-const array = [1,6,7,8,3,4,5,6]
-const arrayFiltered = array.filter(currentNumber => currentNumber % 2 === 0)
-
-console.log(arrayFiltered)
+for(let i = 1; i <= 10; i++) {
+    if(i == 1) {
+        
+    }else if(i == 2) {
+        console.log(`${i}`);
+    }else if(i >= 3){
+        x = i / 2;
+        y = Number.isInteger(x);
+        if(y == false && i >= 3) {
+            console.log(`${i}`);
+        }
+    }
+    }
